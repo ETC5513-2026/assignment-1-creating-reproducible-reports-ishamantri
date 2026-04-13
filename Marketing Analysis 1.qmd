@@ -26,5 +26,13 @@ library(lubridate)
 
 ```{r}
 
+#| include: false
+raw_data <- read_csv("data/36831700_Isha_Mantri.csv")
+processed_data <- raw_data |>
+    drop_na(purchase_amount) |>    
+  mutate(
+signup_date = parse_date_time(signup_date, orders = c("ymd", "dmy", "mdy", "b d, Y"))) |>
+  select(-notes)
+   
 
 ```
