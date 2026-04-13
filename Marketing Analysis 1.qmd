@@ -97,3 +97,25 @@ ggplot(processed_data, aes(x=marketing_spend, fill = segment)) +
 ## *Plot Description:*
 
 As shown in @fig-marketing-distribution, marketing spend was spread across the full range of \$0 to \$300 for all three customer segments, suggesting the campaign did not heavily favour any particular spending level. The Consumer segment had the most customers and showed a slight concentration of spend towards the higher end, around \$250 to \$300. The Enterprise segment had the fewest customers with spend mostly falling between \$50 and \$250, which is expected given it is the smallest group. The SMB segment showed a fairly even spread across all spending ranges. Overall the budget appears to have been distributed evenly across all three customer groups.
+
+## *Result:*
+
+## *Figure 1:*
+
+As seen in @fig-scatterplot, customers who received higher marketing spend generally purchased more, The upward trend line suggests a positive link between the two variables although the spread of dots around the line indicates that marketing spend is not the only factor driving purchases.
+
+```{r}
+
+#| label: fig-scatterplot
+#| fig-cap: "Relation between Marketing Spend and Purchase Amount"
+
+ggplot(processed_data, aes(x = marketing_spend, y = purchase_amount,colour = segment)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE, colour = "blue") +
+  labs(
+    x = "Marketing Spend ($)",
+    y = "Purchase Amount ($)",
+    colour = "Segment"
+  )
+
+```
