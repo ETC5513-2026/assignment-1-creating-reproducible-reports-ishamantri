@@ -25,7 +25,6 @@ library(ggplot2)
 ```
 
 ```{r}
-
 #| include: false
 raw_data <- read_csv("data/36831700_Isha_Mantri.csv")
 processed_data <- raw_data |>
