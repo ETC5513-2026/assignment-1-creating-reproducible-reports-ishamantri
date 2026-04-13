@@ -14,5 +14,5 @@ I mainly used AI (ChatGPT) as a troubleshooting tool while cleaning and processi
 
 ![Standardising format](images/parse_date_time_ss.png)
 
-![Standardising format](images/tagging_ss)
+![Standardising format](images/tagging_ss.png)
 
