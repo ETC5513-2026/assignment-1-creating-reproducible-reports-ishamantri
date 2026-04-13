@@ -1,0 +1,30 @@
+---
+title: "Marketing Analysis"
+author: "Isha Mantri"
+format: 
+  html: default
+  pdf: default
+ 
+execute: 
+  echo: false
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r}
+
+#| include: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(knitr)
+library(lubridate)
+
+```
+
+```{r}
+
+
+```
