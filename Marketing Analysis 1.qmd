@@ -21,7 +21,7 @@ editor: visual
 library(tidyverse)
 library(knitr)
 library(lubridate)
-
+library(ggplot2)
 ```
 
 ```{r}
@@ -34,7 +34,6 @@ processed_data <- raw_data |>
 signup_date = parse_date_time(signup_date, orders = c("ymd", "dmy", "mdy", "b d, Y"))) |>
   select(-notes)
    
-
 ```
 
 ## *Introduction Section:*
@@ -61,7 +60,6 @@ ncol(processed_data)
 ```
 
 ```{r}
-
 #| label: tbl-summarytable
 #| tbl-cap: "Summary of Average Spend and Purchases Across Customer Segmets"
 
@@ -81,9 +79,9 @@ processed_data |>
 The processed dataset contains `r nrow(processed_data)` observations and `r ncol(processed_data)` variables. Out of the original 150 customers contacted in the campaign, 132 had a recorded purchase amount and were kept for analysis. As seen in @tbl-summarytable, the Consumer segment is the largest group with 86 customers, followed by SMB with 31 customers and Enterprise with only 15 customers. The average marketing spend was fairly similar across all three groups, ranging from \$142 to \$155, suggesting the campaign budget was distributed evenly. However the average purchase amount varied across segments, SMB customers bought the most on average at \$97.15, followed by consumer at \$86.29 and Enterprise at \$74.67.
 
 ```{r}
-
 #| label: fig-marketing-distribution
 #| fig-cap: "How Marketing Spend was distributed across Customer Segment"
+
 
 ggplot(processed_data, aes(x=marketing_spend, fill = segment)) +
   geom_histogram(bins = 20) +
@@ -91,7 +89,9 @@ ggplot(processed_data, aes(x=marketing_spend, fill = segment)) +
   labs(
     x = "Marketing Spend",
     y = "Number of Customers"
-  )
+  ) 
+  
+
 ```
 
 ## *Plot Description:*
@@ -105,7 +105,6 @@ As shown in @fig-marketing-distribution, marketing spend was spread across the f
 As seen in @fig-scatterplot, customers who received higher marketing spend generally purchased more, The upward trend line suggests a positive link between the two variables although the spread of dots around the line indicates that marketing spend is not the only factor driving purchases.
 
 ```{r}
-
 #| label: fig-scatterplot
 #| fig-cap: "Relation between Marketing Spend and Purchase Amount"
 
@@ -117,5 +116,23 @@ ggplot(processed_data, aes(x = marketing_spend, y = purchase_amount,colour = seg
     y = "Purchase Amount ($)",
     colour = "Segment"
   )
+
+```
+
+## *Figure 2:*
+
+@fig-barchart shows that Consumer customers had the highest average purchase amount, followed by SMB and then Enterprise customers. These results suggest that the personalised marketing campaign was effective customers who received more marketing spend did tend to buy more, which answers our research question.
+
+```{r}
+#| label: fig-barchart 
+#| fig-cap: "Average Purchase Amount Across Customer Segments" 
+
+processed_data <- processed_data |>
+  group_by(segment) |>
+  mutate(avg_pur = mean(purchase_amount, na.rm = TRUE))
+ggplot(processed_data,aes(x = segment, y = avg_pur, fill = segment)) + geom_bar(stat = "identity", width = .5) + 
+  labs( 
+    x = "Customer Segment",
+    y = "Average Purchase Amount ($)" )
 
 ```
