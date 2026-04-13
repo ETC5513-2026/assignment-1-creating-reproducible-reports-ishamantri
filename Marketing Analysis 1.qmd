@@ -36,3 +36,21 @@ signup_date = parse_date_time(signup_date, orders = c("ymd", "dmy", "mdy", "b d,
    
 
 ```
+
+## *Introduction Section:*
+
+Our company ran a personalised marketing campaign last quarter, where we contacted 150 of our customers through ads, emails and coupons. Not every customer received the same level of attention, some customers had a lot more spent on them than others. The goal is to find out whether spending more on a customer actually leads them to buying more. This report uses the campaign data from 150 customers to answer this question.
+
+## *Research Question:*
+
+We want to know if spending more money on a customer made them buy more. To answer this we will compare the marketing spend and purchase amount for each customer. We will also see if this trend looks different across our three customer groups, Consumer, SMB and Enterprise. 
+
+## *Dataset Introduction:*
+
+The dataset contains information about 150 customers from our last quarter's personalised marketing campaign. It records how much was spent marketing to each customer, how many times they visited the site and how much they actually purchased. Before starting the analysis, the data required some cleaning to make it suitable for use. A total of 18 customers had no purchase amount recorded and were removed as they could not contribute to the analysis. The signup date column contained dates written in several different formats across the dataset, which were all standardised into one consistent format. The notes column was also removed as 110 out of 150 values were missing, making it too incomplete to be of any use.
+
+## 
+
+```{r}
+
+```
