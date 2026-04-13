@@ -79,3 +79,21 @@ processed_data |>
 ## *Table Description:*
 
 The processed dataset contains `r nrow(processed_data)` observations and `r ncol(processed_data)` variables. Out of the original 150 customers contacted in the campaign, 132 had a recorded purchase amount and were kept for analysis. As seen in @tbl-summarytable, the Consumer segment is the largest group with 86 customers, followed by SMB with 31 customers and Enterprise with only 15 customers. The average marketing spend was fairly similar across all three groups, ranging from \$142 to \$155, suggesting the campaign budget was distributed evenly. However the average purchase amount varied across segments, SMB customers bought the most on average at \$97.15, followed by consumer at \$86.29 and Enterprise at \$74.67.
+
+```{r}
+
+#| label: fig-marketing-distribution
+#| fig-cap: "How Marketing Spend was distributed across Customer Segment"
+
+ggplot(processed_data, aes(x=marketing_spend, fill = segment)) +
+  geom_histogram(bins = 20) +
+  facet_wrap(~segment) +
+  labs(
+    x = "Marketing Spend",
+    y = "Number of Customers"
+  )
+```
+
+## *Plot Description:*
+
+As shown in @fig-marketing-distribution, marketing spend was spread across the full range of \$0 to \$300 for all three customer segments, suggesting the campaign did not heavily favour any particular spending level. The Consumer segment had the most customers and showed a slight concentration of spend towards the higher end, around \$250 to \$300. The Enterprise segment had the fewest customers with spend mostly falling between \$50 and \$250, which is expected given it is the smallest group. The SMB segment showed a fairly even spread across all spending ranges. Overall the budget appears to have been distributed evenly across all three customer groups.
